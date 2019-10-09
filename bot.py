@@ -11,7 +11,7 @@ from discord.ext import commands
 
 
 
-bot = commands.Bot(command_prefix=';')
+bot = commands.Bot(command_prefix='-')
 
 
 @bot.event
@@ -39,7 +39,7 @@ async def weather(ctx, *, city):
     try:
             location_name= json.loads(r.text)['location']['name']
     except KeyError:
-            await ctx.send("Введи нормальный запрос блеять")
+            await ctx.send("Enter a normal bleat request")
             return
 
     else:
@@ -56,12 +56,12 @@ async def weather(ctx, *, city):
         c_w_k1= c_w_k//3600
 
         em1= discord.Embed(title= "**Weather**") 
-        em1.set_footer(text= f"Последнее обновление: {current_last_updated}")
-        em1.add_field(name= "🌇Город/Регион", value= f"{location_name}/{location_region}", inline=False)
-        em1.add_field(name= "⌚Время", value= f"{location_localtime}", inline= False)
-        em1.add_field(name= "🌡Температура", value= f"{current_temp_c} с°", inline= True)
-        em1.add_field(name= "🎐Влажность", value= f"{current_humidity}%", inline = True)
-        em1.add_field(name="🚩Скорость Ветра", value= f"{c_w_k1}m/s", inline= True)
+        em1.set_footer(text= f"Last update: {current_last_updated}")
+        em1.add_field(name= "🌇City / Region", value= f"{location_name}/{location_region}", inline=False)
+        em1.add_field(name= "⌚Time", value= f"{location_localtime}", inline= False)
+        em1.add_field(name= "🌡Tempertaure", value= f"{current_temp_c} с°", inline= True)
+        em1.add_field(name= "🎐Humidity", value= f"{current_humidity}%", inline = True)
+        em1.add_field(name="🚩Wind speed", value= f"{c_w_k1}m/s", inline= True)
         em1.set_thumbnail(url=f"https:{current_condition_icon}")
         await ctx.send(embed= em1)
 
@@ -83,7 +83,7 @@ class Action(commands.Cog):
         random_number = random.randint(1 , 8)
         with open('pat.json') as f:
             imeg= json.load(f) 
-            em= discord.Embed(title= '', description=(f"**✋{ctx.author.display_name}** погладил **{user.display_name}**"), color = (ctx.author.colour))
+            em= discord.Embed(title= '', description=(f"**✋{ctx.author.display_name}**Pats**{user.display_name}**"), color = (ctx.author.colour))
             em.set_image(url= (imeg[f'{random_number}']))
         await ctx.send(embed = em)
     
@@ -97,7 +97,7 @@ class Action(commands.Cog):
         r = requests.get("https://api.tenor.com/v1/search?q=%s&key=%s&limit=%s" % (search, api_key, lmt))
         response_json = r.json()
         imeg= response_json['results'][random_number]['media'][0]['gif']['url']
-        em= discord.Embed(title= '', description=(f"**✋{ctx.author.display_name}** тыкнул **{user.display_name}**"), color = (ctx.author.colour))
+        em= discord.Embed(title= '', description=(f"**✋{ctx.author.display_name}** poked **{user.display_name}**"), color = (ctx.author.colour))
         em.set_image(url= imeg)
         await ctx.send(embed = em)
     
@@ -111,7 +111,7 @@ class Action(commands.Cog):
         r = requests.get("https://api.tenor.com/v1/search?q=%s&key=%s&limit=%s" % (search, api_key, lmt))
         response_json = r.json()
         imeg= response_json['results'][random_number]['media'][0]['gif']['url']
-        em= discord.Embed(title= '', description=(f"**👊{ctx.author.display_name}** ударил **{user.display_name}**"), color = (ctx.author.colour))
+        em= discord.Embed(title= '', description=(f"**👊{ctx.author.display_name}** slapped **{user.display_name}**"), color = (ctx.author.colour))
         em.set_image(url= imeg)
         await ctx.send(embed = em)
     
@@ -125,7 +125,7 @@ class Action(commands.Cog):
         r = requests.get("https://api.tenor.com/v1/search?q=%s&key=%s&limit=%s" % (search, api_key, lmt))
         response_json = r.json()
         imeg= response_json['results'][random_number]['media'][0]['gif']['url']
-        em= discord.Embed(title= '', description=(f"**👊👊{ctx.author.display_name}** уебал **{user.display_name}**"), color = (ctx.author.colour))
+        em= discord.Embed(title= '', description=(f"**👊👊{ctx.author.display_name}** punched**{user.display_name}**"), color = (ctx.author.colour))
         em.set_image(url= imeg)
         await ctx.send(embed = em)
     
@@ -139,26 +139,9 @@ class Action(commands.Cog):
         r = requests.get("https://api.tenor.com/v1/search?q=%s&key=%s&limit=%s" % (search, api_key, lmt))
         response_json = r.json()
         imeg= response_json['results'][random_number]['media'][0]['gif']['url']
-        em= discord.Embed(title= '', description=(f"**💋{ctx.author.display_name}** сладко поцеловал **{user.display_name}**"), color = (ctx.author.colour))
+        em= discord.Embed(title= '', description=(f"**💋{ctx.author.display_name}** kissed**{user.display_name}**"), color = (ctx.author.colour))
         em.set_image(url= imeg)
         await ctx.send(embed = em)
-    
-
-    @commands.command()
-    async def hug(self, ctx, user: discord.Member= None):
-        
-        random_number = random.randint(0 , 5)
-        api_key = (str(os.getenv('tenor')))
-        lmt = 6
-        search = "hugging comfort"
-        r = requests.get("https://api.tenor.com/v1/search?q=%s&key=%s&limit=%s" % (search, api_key, lmt))
-        response_json = r.json()
-        imeg= response_json['results'][random_number]['media'][0]['gif']['url']
-        em= discord.Embed(title= '', description=(f"**✋{ctx.author.display_name}** обнял **{user.display_name}**"), color = (ctx.author.colour))
-        em.set_image(url= imeg)
-        await ctx.send(embed = em)
-
-  
 
     @commands.command()
     async def cuddle(self, ctx, user: discord.Member= None):
@@ -170,7 +153,7 @@ class Action(commands.Cog):
         r = requests.get("https://api.tenor.com/v1/search?q=%s&key=%s&limit=%s" % (search, api_key, lmt))
         response_json = r.json()
         imeg= response_json['results'][random_number]['media'][0]['gif']['url']
-        em= discord.Embed(title= '', description=(f"**✋{ctx.author.display_name}** нежно прижал **{user.display_name}**"), color = (ctx.author.colour))
+        em= discord.Embed(title= '', description=(f"**✋{ctx.author.display_name}** cuddled **{user.display_name}**"), color = (ctx.author.colour))
         em.set_image(url= imeg)
         await ctx.send(embed = em)
 
@@ -184,7 +167,7 @@ class Action(commands.Cog):
         r = requests.get("https://api.tenor.com/v1/search?q=%s&key=%s&limit=%s" % (search, api_key, lmt))
         response_json = r.json()
         imeg= response_json['results'][random_number]['media'][0]['gif']['url']
-        em= discord.Embed(title= '', description=(f"**😠{ctx.author.display_name}** разозлился"), color = (ctx.author.colour))
+        em= discord.Embed(title= '', description=(f"**😠{ctx.author.display_name}** pissed off"), color = (ctx.author.colour))
         em.set_image(url= imeg)
         await ctx.send(embed = em)
 
@@ -198,7 +181,7 @@ class Action(commands.Cog):
         r = requests.get("https://api.tenor.com/v1/search?q=%s&key=%s&limit=%s" % (search, api_key, lmt))
         response_json = r.json()
         imeg= response_json['results'][random_number]['media'][0]['gif']['url']
-        em= discord.Embed(title= '', description=(f"**✋{ctx.author.display_name}** выпивает"), color = (ctx.author.colour))
+        em= discord.Embed(title= '', description=(f"**✋{ctx.author.display_name}** drinks"), color = (ctx.author.colour))
         em.set_image(url= imeg)
         await ctx.send(embed = em)
  
@@ -256,9 +239,9 @@ async def infosys(ctx):
 
     em1= discord.Embed(title= (bot.user.display_name), color=(bot.user.colour))
     em1.add_field(name= "CPU", value= f"> {cpu_name}[{cpu_count}х ядерный]",inline= False)    
-    em1.add_field(name= "RAM(Всего/Свободно/Занято)", value= f"> {totalmem}mb/{freemem}mb/{used}mb", inline= False)
+    em1.add_field(name= "RAM(Total / Free / Busy)", value= f"> {totalmem}mb/{freemem}mb/{used}mb", inline= False)
     em1.add_field(name= "OS", value=f"> {nOS} {vOS}")
-    em1.add_field(name= "Версия Python", value= f"> {platform.python_version()}", inline= True)
+    em1.add_field(name= "Version Python", value= f"> {platform.python_version()}", inline= True)
     await ctx.send(embed= em1)
 
         
