@@ -194,7 +194,7 @@ bot.add_cog(Action(bot))
 @bot.command(pass_context=True)
 async def lyrics(ctx,*, lyrics_name):
     lyrics_url = f"https://api.ksoft.si/lyrics/search?q={lyrics_name}&limit=1"
-    r =requests.get(lyrics_url, headers={"Authorization":(str(os.getenv('ksoft_key')))})
+    r =requests.get(lyrics_url, headers={"Authorization":(os.getenv('ksoft_key'))})
     response_json= json.loads(r.text)
     text= response_json['data'][0]['lyrics']
     artist= response_json['data'][0]['artist']
