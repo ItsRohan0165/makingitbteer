@@ -11,7 +11,9 @@ from discord.ext import commands
 
 
 
-bot = commands.Bot(command_prefix='-')
+bot = commands.Bot(command_prefix='/')
+
+bot.remove_command('help')
 
 
 @bot.event
@@ -21,6 +23,7 @@ async def on_ready():
     print((bot.user.name) + '#' + (bot.user.discriminator))
     print(bot.user.id)
     print('------')
+    
 
 @bot.command(pass_context=True)
 async def say(ctx, *args):
@@ -238,7 +241,7 @@ async def infosys(ctx):
     vOS= platform.uname().release
 
     em1= discord.Embed(title= (bot.user.display_name), color=(bot.user.colour))
-    em1.add_field(name= "CPU", value= f"> {cpu_name}[{cpu_count}х ядерный]",inline= False)    
+    em1.add_field(name= "CPU", value= f"> {cpu_name}[{cpu_count}х Héx]",inline= False)    
     em1.add_field(name= "RAM(Total / Free / Busy)", value= f"> {totalmem}mb/{freemem}mb/{used}mb", inline= False)
     em1.add_field(name= "OS", value=f"> {nOS} {vOS}")
     em1.add_field(name= "Version Python", value= f"> {platform.python_version()}", inline= True)
