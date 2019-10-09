@@ -190,7 +190,7 @@ async def weather(ctx, *, city):
         await ctx.send(embed = em)
  
 
-bot.add_cog(Action(bot))
+
 
 @bot.command(pass_context=True)
 async def lyrics(ctx,*, lyrics_name):
@@ -246,7 +246,7 @@ async def infosys(ctx):
     em1.add_field(name= "CPU", value= f"> {cpu_name}[{cpu_count}х ядерный]",inline= False)    
     em1.add_field(name= "RAM(Всего/Свободно/Занято)", value= f"> {totalmem}mb/{freemem}mb/{used}mb", inline= False)
     em1.add_field(name= "OS", value=f"> {nOS} {vOS}")
-    em1.add_field(name= "Версия Python", value= f"> {platform.python_version()}", inline= True)
+    em1.add_field(name= " Python", value= f"> {platform.python_version()}", inline= True)
     await ctx.send(embed= em1)
 
 
