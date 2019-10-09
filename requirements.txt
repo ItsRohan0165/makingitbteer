@@ -1,0 +1,10 @@
+discord
+spotify
+asyncio
+requests
+datetime
+django
+gunicorn
+django-heroku
+psutil
+py-cpuinfo
