@@ -33,7 +33,7 @@ async def say(ctx, *args):
 
 @bot.command(pass_context=True)
 async def weather(ctx, *, city):
-    key= (str(os.getenv('weather')))
+    key= (os.getenv('weather'))
     url= f"http://api.apixu.com/v1/current.json?key={key}&q={city}"
     r = requests.get(url)
     response_json = r.json()
