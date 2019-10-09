@@ -22,66 +22,11 @@ async def on_ready():
     print(bot.user.id)
     print('------')
 
-
-@bot.command(pass_context=True, aliases=['clean', 'c'])
-@commands.has_permissions(manage_messages=True)
-async def clear(ctx, limit: int):
-    await ctx.message.delete(delay=None)
-    await ctx.channel.purge(limit=limit)
-    
-@clear.error
-async def clear_error(ctx, error):
-    if isinstance(error, commands.MissingPermissions):
-        await ctx.send("❗❗❗Ты не можешь этого сделать!")
-
-@bot.command()
-async def avatar(ctx, user: discord.Member=None):
-    user= user or ctx.author 
-    qe = discord.Embed(title=(f"@{user.display_name}"), color=(user.color))
-    qe.set_image(url=(user.avatar_url_as(format=None, static_format='png', size=2048)))
-    await ctx.send(embed=qe)
-
 @bot.command(pass_context=True)
 async def say(ctx, *args):
     mesg= ''.join(args)
     await ctx.message.delete(delay=None)
     return await ctx.send(mesg)
-
-
-@bot.command()
-async def status(ctx, user: discord.Member=None):
-    user= user or ctx.author
-    check= user.activity.name
-    if check == 'Spotify':
-        time = user.activity.duration
-        minutess = str(datetime.timedelta(seconds= time.seconds))
-        em= discord.Embed(title= (user.display_name), description= (f"__Тип__: **{user.activity.name}**\n __Название__: **{user.activity.title}**\n __Исполнитель__: **{user.activity.artist}**\n __Альбом__: **{user.activity.album}**\n__Длительность__: **{minutess}**"), color= (user.activity.color))
-        em.set_thumbnail(url=(user.activity.album_cover_url))
-        await ctx.send(embed= em)
-        pass
-        
-    else:
-        em1= discord.Embed(title= (user.name), description=(f"__Название__: **{user.activity.name}**\n__Детали__: **{user.activity.details}**\n__Время__: **{user.activity.start}**\n__Время 2__: **{user.activity.timestamps}**"))
-        em1.set_thumbnail(url=(user.activity.large_image_url))    
-    await ctx.send(embed= em1)
-    
-@bot.command()
-async def userinfo(ctx, user: discord.Member= None):
-    user = user or ctx.author
-    color= user.colour
-    #tag = user.tag
-    avatarurl= user.avatar_url_as(format=None, static_format='png', size=2048)
-    #join_server = user.joined_at
-    game_status = user.activity.name
-    #roles_list = user.roles
-    #acc_create = user.created_at
-    accID= user.id
-    statusdisc= user.status
-    
-    em=discord.Embed(title = f"Info **{user.name}**",description=(f"**ID**: {accID}\n**Status**: {statusdisc}\n**•{game_status}**\n"), color= (color))
-    em.set_thumbnail(url= avatarurl)
-    await ctx.send(embed= em)
-
 
 @bot.command(pass_context=True)
 async def weather(ctx, *, city):
@@ -127,34 +72,6 @@ async def weather(ctx, *, city):
 class Moderation(commands.Cog): 
     def __init__(self, bot):   
         self.bot = bot
-
-    @commands.command()
-    @commands.has_permissions(kick_members=True)
-    async def kick(self, ctx, user: discord.Member):
-        await ctx.guild.kick(user)
-        await ctx.send(f"**{user.name}** был успешно кикнут")
-    
-    @kick.error
-    async def kick_error(self, ctx, error):
-        if isinstance(error, commands.MissingPermissions):
-         await ctx.send("Ты не можешь этого сделать!")
-
-    @commands.command()
-    @commands.has_permissions(ban_members= True)
-    async def ban(self, ctx, user: discord.Member):
-        await ctx.guild.ban(user)
-        await ctx.send(f"🔨 **{user.name}** Был забанен") 
-
-    @ban.error
-    async def ban_error(self, ctx, error):
-        if isinstance(error, commands.MissingPermissions):
-         await ctx.send("Ты не можешь этого сделать!")      
-
-    #@commands.command()
-    @commands.has_permissions(ban_members= True)
-    async def unban(self, ctx, *, id):
-        await ctx.guild.unban("id")
-        await ctx.send(f"{id} был разбанен")
 
 bot.add_cog(Moderation(bot))        
 class Action(commands.Cog):
@@ -313,12 +230,6 @@ async def lyrics(ctx,*, lyrics_name):
         em.set_thumbnail(url= (art))
         await ctx.send(embed= em)
 
-@bot.command(pass_context=True)
-async def math(ctx,*, arg1):
-    """Калькулятор"""
-    res= str(eval(arg1))
-    await ctx.send(f'Ваш ответ: {res}')        
-
 #CFG PC
 import platform
 import psutil
@@ -350,20 +261,5 @@ async def infosys(ctx):
     em1.add_field(name= "Версия Python", value= f"> {platform.python_version()}", inline= True)
     await ctx.send(embed= em1)
 
-
-@bot.command(pass_context=True)
-@commands.has_permissions(manage_emojis=True)
-async def createem(ctx, arg1, arg2):
-    """Создание Смайлов: createem [url] [Name]"""
-    url_img= (arg1)
-    r=requests.get(url_img)
-    await ctx.guild.create_custom_emoji(name= arg2,image=r.content)
-    em1= discord.Embed(title= '', description = f"Успешно создан __**{arg2}**__", color = 0x008000)
-    await ctx.send(embed= em1)
-
-@createem.error
-async def createem_error(self ,ctx, error):
-    if isinstance(error, commands.MissingPermissions):
-        await ctx.send("❗❗❗Ты не можешь этого сделать!")
         
 bot.run(os.getenv('TOKEN'))
