@@ -252,4 +252,4 @@ async def infosys(ctx):
 
 
         
-bot.run(str(os.getenv('TOKEN')))
+bot.run(os.getenv('TOKEN'))
