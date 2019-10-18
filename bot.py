@@ -26,10 +26,9 @@ async def on_ready():
     
 
 @bot.command(pass_context=True)
-async def say(ctx, *args):
-    mesg= ''.join(args)
+async def say(ctx, *, args):
     await ctx.message.delete(delay=None)
-    return await ctx.send(mesg)
+    return await ctx.send(args)
 
 @bot.command(pass_context=True)
 async def weather(ctx, *, city):
