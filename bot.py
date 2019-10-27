@@ -27,7 +27,7 @@ async def on_ready():
 
 @bot.command(pass_context=True)
 async def say(ctx, *, args):
-    await ctx.message.delete(delay=None)
+    await ctx.message.delete(delay=1.0)
     return await ctx.send(args)
 
 @bot.command(pass_context=True)
