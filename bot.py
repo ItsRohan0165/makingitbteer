@@ -116,14 +116,72 @@ class Action(commands.Cog):
         em= discord.Embed(title= '', description=(f"**👊{ctx.author.display_name}** slapped **{user.display_name}**"), color = (ctx.author.colour))
         em.set_image(url= imeg)
         await ctx.send(embed = em)
+        
+    @commands.command()
+    async def cry(self, ctx, user: discord.Member= None):
+        
+        random_number = random.randint(0 , 5)
+        api_key = (str(os.getenv('tenor')))
+        lmt = 6
+        search = "cry"
+        r = requests.get("https://api.tenor.com/v1/search?q=%s&key=%s&limit=%s" % (search, api_key, lmt))
+        response_json = r.json()
+        imeg= response_json['results'][random_number]['media'][0]['gif']['url']
+        em= discord.Embed(title= '', description=(f"**😢😢 {ctx.author.display_name}** cries "), color = (ctx.author.colour))
+        em.set_image(url= imeg)
+        await ctx.send(embed = em)
+        
+    @commands.command()
+    async def smile(self, ctx, user: discord.Member= None):
+        
+        random_number = random.randint(0 , 5)
+        api_key = (str(os.getenv('tenor')))
+        lmt = 6
+        search = "smile"
+        r = requests.get("https://api.tenor.com/v1/search?q=%s&key=%s&limit=%s" % (search, api_key, lmt))
+        response_json = r.json()
+        imeg= response_json['results'][random_number]['media'][0]['gif']['url']
+        em= discord.Embed(title= '', description=(f"**😊😊 {ctx.author.display_name}** smiles "), color = (ctx.author.colour))
+        em.set_image(url= imeg)
+        await ctx.send(embed = em)
+        
+    @commands.command()
+    async def bully(self, ctx, user: discord.Member= None):
+        
+        random_number = random.randint(0 , 5)
+        api_key = (str(os.getenv('tenor')))
+        lmt = 6
+        search = "bully"
+        r = requests.get("https://api.tenor.com/v1/search?q=%s&key=%s&limit=%s" % (search, api_key, lmt))
+        response_json = r.json()
+        imeg= response_json['results'][random_number]['media'][0]['gif']['url']
+        em= discord.Embed(title= '', description=(f"**👿👿 {ctx.author.display_name}** bullies **{user.display_name}**"), color = (ctx.author.colour))
+        em.set_image(url= imeg)
+        await ctx.send(embed = em)
+        
     
+    @commands.command()
+    async def stare(self, ctx, user: discord.Member= None):
+        
+        random_number = random.randint(0 , 5)
+        api_key = (str(os.getenv('tenor')))
+        lmt = 6
+        search = "stare"
+        r = requests.get("https://api.tenor.com/v1/search?q=%s&key=%s&limit=%s" % (search, api_key, lmt))
+        response_json = r.json()
+        imeg= response_json['results'][random_number]['media'][0]['gif']['url']
+        em= discord.Embed(title= '', description=(f"** {ctx.author.display_name}** stares at **{user.display_name}**"), color = (ctx.author.colour))
+        em.set_image(url= imeg)
+        await ctx.send(embed = em)
+        
+        
     @commands.command()
     async def punch(self, ctx, user: discord.Member= None):
        
         random_number = random.randint(0 , 5)
         api_key = (str(os.getenv('tenor')))
         lmt = 6
-        search = "dropkick"
+        search = "punch"
         r = requests.get("https://api.tenor.com/v1/search?q=%s&key=%s&limit=%s" % (search, api_key, lmt))
         response_json = r.json()
         imeg= response_json['results'][random_number]['media'][0]['gif']['url']
