@@ -88,6 +88,15 @@ class Action(commands.Cog):
             em= discord.Embed(title= '', description=(f"**✋{ctx.author.display_name}**Pats**{user.display_name}**"), color = (ctx.author.colour))
             em.set_image(url= (imeg[f'{random_number}']))
         await ctx.send(embed = em)
+        
+    @commands.command()
+    async def kill(self, ctx, user: discord.Member= None):
+        random_number = random.randint(1 , 8)
+        with open('kill.json') as f:
+            imeg= json.load(f)
+            em= discord.Embed(title= '', description=(f"** {ctx.author.display_name}** killed **{user.display_name}** R.I.P!"), color = (ctx.author.colour))
+            em.set_image(url= (imeg[f'{random_number}']))
+        await ctx.send(embed = em)
     
     @commands.command()
     async def poke(self, ctx, user: discord.Member= None):
@@ -130,22 +139,7 @@ class Action(commands.Cog):
         em= discord.Embed(title= '', description=(f"**😢😢 {ctx.author.display_name}** cries "), color = (ctx.author.colour))
         em.set_image(url= imeg)
         await ctx.send(embed = em)
-        
-    @commands.command()
-    async def kill(self, ctx, user: discord.Member= None):
-        
-        random_number = random.randint(0 , 5)
-        api_key = (str(os.getenv('tenor')))
-        lmt = 6
-        search = "cartoon dead"
-        r = requests.get("https://api.tenor.com/v1/search?q=%s&key=%s&limit=%s" % (search, api_key, lmt))
-        response_json = r.json()
-        imeg= response_json['results'][random_number]['media'][0]['gif']['url']
-        em= discord.Embed(title= '', description=(f"** {ctx.author.display_name}** killed **{user.display_name}** R.I.P!"), color = (ctx.author.colour))
-        em.set_image(url= imeg)
-        await ctx.send(embed = em)
-        
-        
+             
     
     @commands.command()
     async def smile(self, ctx, user: discord.Member= None):
