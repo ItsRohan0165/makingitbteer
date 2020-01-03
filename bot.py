@@ -123,6 +123,8 @@ class Action(commands.Cog):
         response_json = r.json()
         imeg= response_json['results'][random_number]['media'][0]['gif']['url']
         em= discord.Embed(title= '', description=(f"**{user.display_name}** stinks!! Ewww"), color = (ctx.author.colour))
+        em.set_image(url= imeg)
+        await ctx.send(embed = em)
         
     @commands.command()
     async def hug(self, ctx, user: discord.Member= None):
