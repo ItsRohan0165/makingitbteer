@@ -91,7 +91,7 @@ class Action(commands.Cog):
         
     @commands.command()
     async def kill(self, ctx, user: discord.Member= None):
-        random_number = random.randint(1 , 8)
+        random_number = random.randint(1 , 11)
         with open('kill.json') as f:
             imeg= json.load(f)
             em= discord.Embed(title= '', description=(f"** {ctx.author.display_name}** killed **{user.display_name}** R.I.P!"), color = (ctx.author.colour))
@@ -101,7 +101,7 @@ class Action(commands.Cog):
     @commands.command()
     async def poke(self, ctx, user: discord.Member= None):
         
-        random_number = random.randint(0 , 5)
+        random_number = random.randint(0 , 10)
         api_key = (str(os.getenv('tenor')))
         lmt = 6
         search = "poke"
@@ -115,7 +115,7 @@ class Action(commands.Cog):
     @commands.command()
     async def stink(self, ctx, user: discord.Member= None):
         
-        random_number = random.randint(0 , 5)
+        random_number = random.randint(0 , 10)
         api_key = (str(os.getenv('tenor')))
         lmt = 6
         search = "stink"
@@ -129,7 +129,7 @@ class Action(commands.Cog):
     @commands.command()
     async def hug(self, ctx, user: discord.Member= None):
         
-        random_number = random.randint(0 , 5)
+        random_number = random.randint(0 , 10)
         api_key = (str(os.getenv('tenor')))
         lmt = 6
         search = "anime couple hug"
@@ -145,7 +145,7 @@ class Action(commands.Cog):
     @commands.command()
     async def slap(self, ctx, user: discord.Member= None):
        
-        random_number = random.randint(0 , 5)
+        random_number = random.randint(0 , 10)
         api_key = (str(os.getenv('tenor')))
         lmt = 6
         search = "slap"
@@ -159,7 +159,7 @@ class Action(commands.Cog):
     @commands.command()
     async def cry(self, ctx, user: discord.Member= None):
         
-        random_number = random.randint(0 , 5)
+        random_number = random.randint(0 , 10)
         api_key = (str(os.getenv('tenor')))
         lmt = 6
         search = "cry"
@@ -174,7 +174,7 @@ class Action(commands.Cog):
     @commands.command()
     async def smile(self, ctx, user: discord.Member= None):
         
-        random_number = random.randint(0 , 5)
+        random_number = random.randint(0 , 20)
         api_key = (str(os.getenv('tenor')))
         lmt = 6
         search = "smile"
@@ -188,7 +188,7 @@ class Action(commands.Cog):
     @commands.command()
     async def bully(self, ctx, user: discord.Member= None):
         
-        random_number = random.randint(0 , 5)
+        random_number = random.randint(0 , 10)
         api_key = (str(os.getenv('tenor')))
         lmt = 6
         search = "bully"
@@ -203,7 +203,7 @@ class Action(commands.Cog):
     @commands.command()
     async def stare(self, ctx, user: discord.Member= None):
         
-        random_number = random.randint(0 , 5)
+        random_number = random.randint(0 , 20)
         api_key = (str(os.getenv('tenor')))
         lmt = 6
         search = "stare"
@@ -218,7 +218,7 @@ class Action(commands.Cog):
     @commands.command()
     async def punch(self, ctx, user: discord.Member= None):
        
-        random_number = random.randint(0 , 5)
+        random_number = random.randint(0 , 10)
         api_key = (str(os.getenv('tenor')))
         lmt = 6
         search = "punch"
@@ -232,7 +232,7 @@ class Action(commands.Cog):
     @commands.command()
     async def kiss(self, ctx, user: discord.Member= None):
         
-        random_number = random.randint(0 , 5)
+        random_number = random.randint(0 , 20)
         api_key = (str(os.getenv('tenor')))
         lmt = 6
         search = "sweet kiss"
@@ -246,7 +246,7 @@ class Action(commands.Cog):
     @commands.command()
     async def cuddle(self, ctx, user: discord.Member= None):
         
-        random_number = random.randint(0 , 5)
+        random_number = random.randint(0 , 10)
         api_key = (str(os.getenv('tenor')))
         lmt = 6
         search = "cuddle hug"
@@ -260,7 +260,7 @@ class Action(commands.Cog):
     @commands.command()
     async def angry(self, ctx, user: discord.Member= None):
         
-        random_number = random.randint(0 , 5)
+        random_number = random.randint(0 , 10)
         api_key = (str(os.getenv('tenor')))
         lmt = 6
         search = "angry"
@@ -274,7 +274,7 @@ class Action(commands.Cog):
     @commands.command()
     async def drink(self, ctx, user: discord.Member= None):
         """"""
-        random_number = random.randint(0 , 5)
+        random_number = random.randint(0 , 10)
         api_key = (str(os.getenv('tenor')))
         lmt = 6
         search = "drinking"
