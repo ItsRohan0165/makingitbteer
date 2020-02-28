@@ -82,6 +82,7 @@ class Action(commands.Cog):
     
     @commands.command()
     async def pat(self, ctx, user: discord.Member= None):
+        await ctx.message.delete(delay=0.5)
         random_number = random.randint(1 , 8)
         with open('pat.json') as f:
             imeg= json.load(f) 
@@ -91,6 +92,7 @@ class Action(commands.Cog):
         
     @commands.command()
     async def kill(self, ctx, user: discord.Member= None):
+        await ctx.message.delete(delay=0.5)
         random_number = random.randint(1 , 11)
         with open('kill.json') as f:
             imeg= json.load(f)
@@ -100,6 +102,7 @@ class Action(commands.Cog):
     
     @commands.command()
     async def poke(self, ctx, user: discord.Member= None):
+        await ctx.message.delete(delay=0.5)
         
         random_number = random.randint(0 , 5)
         api_key = (str(os.getenv('tenor')))
@@ -114,6 +117,7 @@ class Action(commands.Cog):
         
     @commands.command()
     async def stink(self, ctx, user: discord.Member= None):
+        await ctx.message.delete(delay=0.5)
         
         random_number = random.randint(0 , 5)
         api_key = (str(os.getenv('tenor')))
@@ -128,6 +132,7 @@ class Action(commands.Cog):
         
     @commands.command()
     async def hug(self, ctx, user: discord.Member= None):
+        await ctx.message.delete(delay=0.5)
         
         random_number = random.randint(0 , 5)
         api_key = (str(os.getenv('tenor')))
@@ -144,6 +149,7 @@ class Action(commands.Cog):
     
     @commands.command()
     async def slap(self, ctx, user: discord.Member= None):
+        await ctx.message.delete(delay=0.5)
        
         random_number = random.randint(0 , 5)
         api_key = (str(os.getenv('tenor')))
@@ -158,6 +164,7 @@ class Action(commands.Cog):
         
     @commands.command()
     async def cry(self, ctx, user: discord.Member= None):
+        await ctx.message.delete(delay=0.5)
         
         random_number = random.randint(0 , 5)
         api_key = (str(os.getenv('tenor')))
@@ -173,6 +180,7 @@ class Action(commands.Cog):
     
     @commands.command()
     async def smile(self, ctx, user: discord.Member= None):
+        await ctx.message.delete(delay=0.5)
         
         random_number = random.randint(0 , 5)
         api_key = (str(os.getenv('tenor')))
@@ -187,6 +195,7 @@ class Action(commands.Cog):
         
     @commands.command()
     async def bully(self, ctx, user: discord.Member= None):
+        await ctx.message.delete(delay=0.5)
         
         random_number = random.randint(0 , 5)
         api_key = (str(os.getenv('tenor')))
@@ -202,6 +211,7 @@ class Action(commands.Cog):
     
     @commands.command()
     async def stare(self, ctx, user: discord.Member= None):
+        await ctx.message.delete(delay=0.5)
         
         random_number = random.randint(0 , 5)
         api_key = (str(os.getenv('tenor')))
@@ -217,6 +227,7 @@ class Action(commands.Cog):
         
     @commands.command()
     async def punch(self, ctx, user: discord.Member= None):
+        await ctx.message.delete(delay=0.5)
        
         random_number = random.randint(0 , 5)
         api_key = (str(os.getenv('tenor')))
@@ -231,6 +242,7 @@ class Action(commands.Cog):
     
     @commands.command()
     async def kiss(self, ctx, user: discord.Member= None):
+        await ctx.message.delete(delay=0.5)
         
         random_number = random.randint(0 , 5)
         api_key = (str(os.getenv('tenor')))
@@ -245,6 +257,7 @@ class Action(commands.Cog):
 
     @commands.command()
     async def cuddle(self, ctx, user: discord.Member= None):
+        await ctx.message.delete(delay=0.5)
         
         random_number = random.randint(0 , 5)
         api_key = (str(os.getenv('tenor')))
@@ -259,6 +272,7 @@ class Action(commands.Cog):
 
     @commands.command()
     async def angry(self, ctx, user: discord.Member= None):
+        await ctx.message.delete(delay=0.5)
         
         random_number = random.randint(0 , 5)
         api_key = (str(os.getenv('tenor')))
@@ -273,6 +287,7 @@ class Action(commands.Cog):
 
     @commands.command()
     async def drink(self, ctx, user: discord.Member= None):
+        await ctx.message.delete(delay=0.5)
         """"""
         random_number = random.randint(0 , 5)
         api_key = (str(os.getenv('tenor')))
