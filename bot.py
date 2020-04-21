@@ -31,41 +31,7 @@ async def say(ctx, *, args):
     return await ctx.send(args)
 
 @bot.command(pass_context=True)
-async def weather(ctx, *, city):
-    key= (os.getenv('weather'))
-    url= f"http://api.apixu.com/v1/current.json?key={key}&q={city}"
-    r = requests.get(url)
-    response_json = r.json()
-    
-    
-    try:
-            location_name= json.loads(r.text)['location']['name']
-    except KeyError:
-            await ctx.send("Enter a normal bleat request")
-            return
 
-    else:
-        location_region= response_json['location']['region']
-        location_name= response_json['location']['name']
-        current_condition_icon= response_json ['current']['condition']['icon']   
-        location_localtime= response_json['location']['localtime']
-        current_last_updated= response_json['current']['last_updated']
-        current_temp_c= response_json['current']['temp_c']  
-        current_humidity= response_json['current']['humidity']
-        current_wind_kph= response_json['current']['wind_kph']
-
-        c_w_k= current_wind_kph*1000 
-        c_w_k1= c_w_k//3600
-
-        em1= discord.Embed(title= "**Weather**") 
-        em1.set_footer(text= f"Last update: {current_last_updated}")
-        em1.add_field(name= "🌇City / Region", value= f"{location_name}/{location_region}", inline=False)
-        em1.add_field(name= "⌚Time", value= f"{location_localtime}", inline= False)
-        em1.add_field(name= "🌡Tempertaure", value= f"{current_temp_c} с°", inline= True)
-        em1.add_field(name= "🎐Humidity", value= f"{current_humidity}%", inline = True)
-        em1.add_field(name="🚩Wind speed", value= f"{c_w_k1}m/s", inline= True)
-        em1.set_thumbnail(url=f"https:{current_condition_icon}")
-        await ctx.send(embed= em1)
 
 
         
@@ -86,7 +52,7 @@ class Action(commands.Cog):
         random_number = random.randint(1 , 8)
         with open('pat.json') as f:
             imeg= json.load(f) 
-            em= discord.Embed(title= '', description=(f"**✋{ctx.author.display_name}**Pats**{user.display_name}**"), color = (ctx.author.colour))
+            em= discord.Embed(title= '', description=(f"**✋{ctx.author.display_name} **Pats** {user.display_name}**"), color = (ctx.author.colour))
             em.set_image(url= (imeg[f'{random_number}']))
         await ctx.send(embed = em)
         
@@ -96,7 +62,7 @@ class Action(commands.Cog):
         random_number = random.randint(1 , 11)
         with open('kill.json') as f:
             imeg= json.load(f)
-            em= discord.Embed(title= '', description=(f"** {ctx.author.display_name}** killed **{user.display_name}** R.I.P!"), color = (ctx.author.colour))
+            em= discord.Embed(title= '', description=(f"** {ctx.author.display_name} **killed** {user.display_name}** R.I.P!"), color = (ctx.author.colour))
             em.set_image(url= (imeg[f'{random_number}']))
         await ctx.send(embed = em)
     
@@ -111,7 +77,7 @@ class Action(commands.Cog):
         r = requests.get("https://api.tenor.com/v1/search?q=%s&key=%s&limit=%s" % (search, api_key, lmt))
         response_json = r.json()
         imeg= response_json['results'][random_number]['media'][0]['gif']['url']
-        em= discord.Embed(title= '', description=(f"**✋{ctx.author.display_name}** poked **{user.display_name}**"), color = (ctx.author.colour))
+        em= discord.Embed(title= '', description=(f"**✋{ctx.author.display_name} **poked** {user.display_name}**"), color = (ctx.author.colour))
         em.set_image(url= imeg)
         await ctx.send(embed = em)
         
@@ -141,7 +107,7 @@ class Action(commands.Cog):
         r = requests.get("https://api.tenor.com/v1/search?q=%s&key=%s&limit=%s" % (search, api_key, lmt))
         response_json = r.json()
         imeg= response_json['results'][random_number]['media'][0]['gif']['url']
-        em= discord.Embed(title= '', description=(f"**🤗🤗{ctx.author.display_name}** hugged **{user.display_name}**"), color = (ctx.author.colour))
+        em= discord.Embed(title= '', description=(f"**🤗🤗{ctx.author.display_name} **hugged** {user.display_name}**"), color = (ctx.author.colour))
         em.set_image(url= imeg)
         await ctx.send(embed = em)
         
@@ -158,7 +124,7 @@ class Action(commands.Cog):
         r = requests.get("https://api.tenor.com/v1/search?q=%s&key=%s&limit=%s" % (search, api_key, lmt))
         response_json = r.json()
         imeg= response_json['results'][random_number]['media'][0]['gif']['url']
-        em= discord.Embed(title= '', description=(f"**👊{ctx.author.display_name}** slapped **{user.display_name}**"), color = (ctx.author.colour))
+        em= discord.Embed(title= '', description=(f"**👊{ctx.author.display_name} **slapped** {user.display_name}**"), color = (ctx.author.colour))
         em.set_image(url= imeg)
         await ctx.send(embed = em)
         
@@ -204,7 +170,7 @@ class Action(commands.Cog):
         r = requests.get("https://api.tenor.com/v1/search?q=%s&key=%s&limit=%s" % (search, api_key, lmt))
         response_json = r.json()
         imeg= response_json['results'][random_number]['media'][0]['gif']['url']
-        em= discord.Embed(title= '', description=(f"**👿👿 {ctx.author.display_name}** bullies **{user.display_name}**"), color = (ctx.author.colour))
+        em= discord.Embed(title= '', description=(f"**👿👿 {ctx.author.display_name} **bullies** {user.display_name}**"), color = (ctx.author.colour))
         em.set_image(url= imeg)
         await ctx.send(embed = em)
         
@@ -220,7 +186,7 @@ class Action(commands.Cog):
         r = requests.get("https://api.tenor.com/v1/search?q=%s&key=%s&limit=%s" % (search, api_key, lmt))
         response_json = r.json()
         imeg= response_json['results'][random_number]['media'][0]['gif']['url']
-        em= discord.Embed(title= '', description=(f"** {ctx.author.display_name}** stares at **{user.display_name}**"), color = (ctx.author.colour))
+        em= discord.Embed(title= '', description=(f"** {ctx.author.display_name} **stares at** {user.display_name}**"), color = (ctx.author.colour))
         em.set_image(url= imeg)
         await ctx.send(embed = em)
         
@@ -236,7 +202,7 @@ class Action(commands.Cog):
         r = requests.get("https://api.tenor.com/v1/search?q=%s&key=%s&limit=%s" % (search, api_key, lmt))
         response_json = r.json()
         imeg= response_json['results'][random_number]['media'][0]['gif']['url']
-        em= discord.Embed(title= '', description=(f"**👊👊{ctx.author.display_name}** punched**{user.display_name}**"), color = (ctx.author.colour))
+        em= discord.Embed(title= '', description=(f"**👊👊{ctx.author.display_name} **punched** {user.display_name}**"), color = (ctx.author.colour))
         em.set_image(url= imeg)
         await ctx.send(embed = em)
     
@@ -251,7 +217,7 @@ class Action(commands.Cog):
         r = requests.get("https://api.tenor.com/v1/search?q=%s&key=%s&limit=%s" % (search, api_key, lmt))
         response_json = r.json()
         imeg= response_json['results'][random_number]['media'][0]['gif']['url']
-        em= discord.Embed(title= '', description=(f"**💋{ctx.author.display_name}** kissed**{user.display_name}**"), color = (ctx.author.colour))
+        em= discord.Embed(title= '', description=(f"**💋{ctx.author.display_name} **kissed** {user.display_name}**"), color = (ctx.author.colour))
         em.set_image(url= imeg)
         await ctx.send(embed = em)
 
@@ -266,7 +232,7 @@ class Action(commands.Cog):
         r = requests.get("https://api.tenor.com/v1/search?q=%s&key=%s&limit=%s" % (search, api_key, lmt))
         response_json = r.json()
         imeg= response_json['results'][random_number]['media'][0]['gif']['url']
-        em= discord.Embed(title= '', description=(f"**✋{ctx.author.display_name}** cuddled **{user.display_name}**"), color = (ctx.author.colour))
+        em= discord.Embed(title= '', description=(f"**✋{ctx.author.display_name} **cuddled** {user.display_name}**"), color = (ctx.author.colour))
         em.set_image(url= imeg)
         await ctx.send(embed = em)
 
