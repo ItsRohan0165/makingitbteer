@@ -33,15 +33,7 @@ async def say(ctx, *, args):
 @bot.command(pass_context=True)
 
 
-
-        
-
-
-class Moderation(commands.Cog): 
-    def __init__(self, bot):   
-        self.bot = bot
-
-bot.add_cog(Moderation(bot))        
+   
 class Action(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
